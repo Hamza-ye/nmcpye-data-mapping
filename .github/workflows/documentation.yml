@@ -1,9 +1,14 @@
 name: documentation
+# on:
+#   push:
+#     branches: [master, feature/documentation]
+#   pull_request:
+#     branches: [master, feature/documentation]
 on:
   push:
-    branches: [master, feature/documentation]
+    branches: [master]
   pull_request:
-    branches: [master, feature/documentation]
+    branches: [master]
 permissions:
   contents: write
 jobs:
