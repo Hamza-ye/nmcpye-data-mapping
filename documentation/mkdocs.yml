@@ -54,8 +54,10 @@ plugins:
   - minify:
       minify_html: true
   - git-revision-date-localized:
+      enabled: !ENV [CI, false]
       enable_creation_date: true
       fallback_to_build_date: true
+      type: date
 
 extra:
   social:
