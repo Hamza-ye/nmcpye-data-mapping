@@ -59,10 +59,11 @@ plugins:
       enable_creation_date: true
       fallback_to_build_date: true
       type: timeago
-  - git-committers:
-      enabled: !ENV [CI, false]
-      repository: Hamza-ye/nmcpye-data-mapping
-      branch: master
+  # - git-committers:
+  #     enabled: !ENV [CI, false]
+  #     repository: Hamza-ye/nmcpye-data-mapping
+  #     branch: master
+  - git-authors
 
 extra:
   social:
