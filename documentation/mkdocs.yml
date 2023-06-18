@@ -57,7 +57,6 @@ plugins:
   - git-revision-date-localized:
       enabled: !ENV [CI, false]
       enable_creation_date: true
-      fallback_to_build_date: true
       type: timeago
   # - git-committers:
   #     enabled: !ENV [CI, false]
