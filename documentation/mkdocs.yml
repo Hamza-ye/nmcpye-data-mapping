@@ -57,7 +57,7 @@ plugins:
       enabled: !ENV [CI, false]
       enable_creation_date: true
       fallback_to_build_date: true
-      type: date
+      type: timeago
 
 extra:
   social:
