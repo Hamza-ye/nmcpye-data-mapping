@@ -2,7 +2,7 @@ site_name: NMCPYe Data Mapping
 site_url: https://hamza-ye.github.io/nmcpye-data-mapping/
 site_author: NMCP Yemen
 repo_url: https://github.com/Hamza-ye/nmcpye-data-mapping
-edit_uri: edit/master/docs/
+edit_uri: edit/master/documentation/
 repo_name: Hamza-ye/nmcpye-data-mapping
 theme:
   name: material
