@@ -1,0 +1,4 @@
+outs:
+- md5: cdd0984f9eb1c83d77e8dac8bf25c8d1
+  size: 934405
+  path: md_health_facilities.csv
