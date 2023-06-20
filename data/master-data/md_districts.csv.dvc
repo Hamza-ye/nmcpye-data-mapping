@@ -1,0 +1,4 @@
+outs:
+- md5: 78e1866752a2befde536501cd82d5e22
+  size: 25198
+  path: md_districts.csv
