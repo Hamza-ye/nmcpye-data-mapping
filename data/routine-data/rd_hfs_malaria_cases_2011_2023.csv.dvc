@@ -1,0 +1,4 @@
+outs:
+- md5: f4898c06fdca0a4ecbc5ec47b373310e
+  size: 70416272
+  path: rd_hfs_malaria_cases_2011_2023.csv

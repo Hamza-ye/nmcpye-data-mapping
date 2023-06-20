@@ -1,0 +1,4 @@
+outs:
+- md5: 6d82c5552b430aab5d2282aa64780106
+  size: 1891523
+  path: rd_chvs_monthly_data.csv
