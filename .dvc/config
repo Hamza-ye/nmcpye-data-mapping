@@ -1,0 +1,6 @@
+[core]
+    remote = nmcpdatastorage
+    autostage = true
+['remote "nmcpdatastorage"']
+    url = gs://nmcpdata-mapping
+    credentialpath = ../storage_key/firm-lacing-376314-bd4c754f9192.json
