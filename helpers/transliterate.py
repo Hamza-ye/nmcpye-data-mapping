@@ -7,37 +7,30 @@ from polyglot.transliteration import Transliterator
 from polyglot.detect import Detector
 from polyglot.text import Text
 
-MIN_TEXT_LENGTH = 2  # minimum text length threshold
+MIN_TEXT_LENGTH = 2  # minimum length
 
 def detect_language(text):
     if len(text) < MIN_TEXT_LENGTH:
-        return None  # Return None if the text is too short
+        return None  # text is too short
     try:
         return detect(text)
     except LangDetectException:
-        return None  # Return None if the language cannot be detected
+        return None  # language cannot be detected
 
 
-# Download language models
+# language models
 downloader.download("transliteration2.ar")
 
-# file path to the Excel file
+# file path
 file_path = 'hfs-list/Health_Facilities.xlsx'
 
-# # Read the Excel file using pd.read_excel
-# df = pd.read_excel(file_path)
-
-# Read Excel file
 df = pd.read_excel(file_path)
 
-# Detect language and store it in a new column
+
 df['HFNameSourceEditable'] = df['HFNameSourceEditable'].fillna('')
 df['language'] = df['HFNameSourceEditable'].astype(str).apply(detect_language)
 
-# # Define a list of words that should not be transliterated
 # no_transliterate_words = ['مركز', 'صحي', 'وحدة', 'مستشفى', 'مستوصف','عيادة','مختبر', 'طوارى']
-
-# a dictionary that maps the no_transliterate_words to their corresponding mapped words
 mapped_words = {'الوحدة الصحية': 'HU',
                 'المركز الصحي': 'HC',
                 'المجمع الصحي': 'Complex',
@@ -107,9 +100,8 @@ def transliterate_text2(text_ar, text_en, language, primary_language='en'):
     # return text
 
 
-# Transliterate the cells to the primary language
+# to primary language
 df['HFNameSourceARENTrans'] = df.apply(
     lambda x: transliterate_text2(x['HFNameSourceEditable'], x['NameEN'], x['language']), axis=1)
 
-# Save the Transliterated
 df.to_excel("hfs_list_all_transliterated.xlsx", index=False)
