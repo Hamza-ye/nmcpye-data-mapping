@@ -89,10 +89,12 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 ### :fontawesome-solid-file-csv: Health Facilities File `md_health_facilities.csv`
 
 ???+ note "Main Fields"
-
     - `gov_id` **ID of the Governorate**.
     - `district_id_who_and_south` **ID of the District**.
     - `hf_code_link` **ID of the Health Facility**
+
+      ==I brought it to the data because it is being used by the south in their data, despite the fact that it had several issues in the north that needed to be addressed to facilitate the merging process. However, during the process of integration, we discovered that some of the codes were not consistent with the current south IDs, and there were instances where the codes overlapped with other codes that were pointing to a routine data of something else, we flagged where they are *Ammar is working on this*. The main challenge we face in connecting to the south data is the presence of empty codes. These codes are associated with routine data from 2011-2019 in our system but they are still not mentioneded anywhere in the south, and they are a lot, Ammar is working on this too, We also have a similar issue in the north, but it affects only a few facilities and is unlikely to significantly impact the overall results, will update this later.==
+
     - `hf_name` **Name of the Health Facility**
     - `hf_type` **Type of the Health Facility**, CENTER, UNIT, HOSPITAL, CLINIC, DISPENSARY, Lab, COMPLEX, OTHER.
     - `hf_owner` PUBLIC, and PRIVATE
@@ -115,7 +117,7 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
     - `mapping_status` Indicates whether the location is mapped to a **health facility** in the `md_health_facilities.csv` master file or not, with `1` indicating a mapped location and a `blank` indicating an unmapped location.
     - `gov_id` **ID of the Governorate**.
     - `district_id_who_south` **ID of the District**.
-    - `hf_code_link`: **ID of the Health Facility**, which has replaced the old `hf_nmcp_uid` column to simplify the merging process with the south data. Some codes may differ from the current south IDs in some health facilities *Ammar is working on this*, and locations that are not mapped to a health facility in the north i.e. with `mapping_status = blank` have been given a temporary ID in the form of `district_id + 900 or >900`.
+    - `hf_code_link`: **ID of the Health Facility**, locations that are not mapped to a health facility in the north i.e. with `mapping_status = blank` have been given a temporary ID in the form of `district_id + 900 or >900`.
     - `level` **Accessibility** level to the health facility, with `1` indicating the easiest accessibility and `3` the hardest.
     - `urban_rural` **Urban** or **Rural**, old ids replaced by lables.
     - `settlement` Type of location, such as village, subvillage, island, etc same as before.
