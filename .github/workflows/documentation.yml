@@ -5,10 +5,10 @@ name: documentation
 #   pull_request:
 #     branches: [master, feature/documentation]
 on:
-  # push:
-  # branches: [master]
-  pull_request:
+  push:
     branches: [master]
+  # pull_request:
+  #   branches: [master]
 permissions:
   contents: write
 jobs:
