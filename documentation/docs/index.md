@@ -2,7 +2,7 @@
 
 Project documentation.
 
-In the shared folder Data are provided in CSV files and will be updated in versions. We chose CSV because it holds more rows, lightweight and compact, less prone to corruption and can be easily inspected and modified., if you want them in excel, to avoid some of the unaccidental issues, using 'letter-ids' is recommended.
+In the shared folder Data are provided in CSV files and will be updated in versions. We chose CSV because it holds more rows, lightweight and compact, less prone to corruption and can be easily inspected and modified, to avoid some of the unaccidental issues, using 'letter-ids' is recommended unless being aware and import the digit-coding of villages into a big-integer type, or some will get truncated.
 
 You can also connect to the live un-stable untested data we are directly working on through the database connection details, shared through email.
 
