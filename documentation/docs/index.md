@@ -79,7 +79,7 @@ Files in this folder contain the entities to which all the routine data can be l
 
 ### :fontawesome-solid-file-csv: Districts File `md_districts.csv`
 
-Administrative boundary datasets for levels 1, 2 (governorate, and district) for Yemen south and north, all master and routine data files have been unified to fully link to this file using the IDs `gov_id` or `district_id_who_and_south`.
+Administrative boundary datasets for levels 1, 2 (governorate, and district) for Yemen south and north, all master and routine data files have been unified to fully link to this file using the IDs `gov_id` or `district_id_unified_s_n`. The `district_id_nmcp` is the one used to link to the district level in shared shape file.
 
 - `gov_id` **ID of the Governorate**, uniquely identified by this id.
 - `district_id_nmcp` **ID of the District** shared in with shape file.
