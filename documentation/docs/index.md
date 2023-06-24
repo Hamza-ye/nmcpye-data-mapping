@@ -136,7 +136,7 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 
 ### :fontawesome-solid-file-csv: ITNs Data 2018 - 2022 `rd_itns_data.csv`
 
-ITNs and IRS data where shared this time in the `day` unit, at which day so we can link any other related data to it easly if needed later like IDPs camps GPS and the populated locations that do not link to a particular catchment location in the catchment file, I introduced the `sn` column, this is the unique ID of the record that might be used to share any related data later.
+ITNs and IRS data where shared this time in the `day` unit, at which day so we can link any other related data to it easly if needed later like IDPs camps' or populated locations' GPS that do not link to a particular catchment location in the catchment file, I introduced the `sn` column, this is the unique ID of the record that might be used to share this kind of data later.
 
 - `sn` in case it is needed to link any data related to this record later like IDPs Camps GPS.
 - `year` Year excution started
@@ -179,7 +179,7 @@ NORTH/SOUTH Health Facilities that have data and needs either be mapped to catch
 |--------------|:-----:|------------------------|-----------------------------|-----------------|
 | **OTHER**    |  292  |                        |                             |                 |
 | **PRIVATE**  |  574  |                        |                             |       111       |
-| **PUBLIC**   |  4692 |           848          |             291             |        1        |
+| **PUBLIC**   |  4692 |           {--1600--} {++848++}          |             291             |        1        |
 
 There are currently {--118234--} {++120982++} locations in total, of which {--105855: 89%--} {++110898: 91%++} have been mapped to a **health facility** in the `md_health_facilities.csv` master file.
 
