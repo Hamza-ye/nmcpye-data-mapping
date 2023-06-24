@@ -154,7 +154,7 @@ ITNs and IRS data where shared this time in the `day` unit, at which day so we c
 - `less_5_f` < 5y Female
 - `preg_wmn` pregnant women
 - `bnets` Bed ntes distributed
-- `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps don't have codes to be linked to a catchment locality but we will look into it and specify within what catchment area later.
+- `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a generak code for all based on the district won't linked to a catchment locality currently but we will look into it and specify within what catchment locality later.
 - `status_of_coverage` Was this location fully covered or partially due to a reason, *Last Answer of the team leader in last data submission date*.
 - `reason` If partaily covered what was the reason, *Last Answer of the team leader in the last data submission date*.
 
@@ -165,7 +165,8 @@ ITNs and IRS data where shared this time in the `day` unit, at which day so we c
 - `execution_started` Month excution started
 - `target_type` `1` is a planned location, `blank` or `zero` is eithr an IDPs camp, or other unplanned populated location, *it needs more review*.
 ...
-- `Is IDPs Camp` `1` is an IDPs Camp.
+- `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a general code for all based on the district won't linked to a catchment locality currently but we will look into it and specify within what catchment area later.
+-
 - `status_of_coverage` Was this location fully covered or partially due to a reason, *Last Answer of the team leader in last data submission date*.
 - `reason` If partaily covered what was the reason, *Last Answer of the team leader in the last data submission date*.
 
@@ -211,3 +212,5 @@ There are currently {--118234--} {++120982++} locations in total, of which {--10
 ### Rutine Data Status
 
 ### Notes on AMD Consumption data that I am working on currenly
+
+### Notes on Entomology data that I am working on currenly too
