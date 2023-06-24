@@ -110,10 +110,11 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 - `chvs_confirmed_2018`, `chvs_confirmed_2019` ... `chvs_confirmed_2022` **Confirmed Malaria Cases** Yealy summary of malaria cases reported by the CHVs supervised by this HF.
 - `hfs_confirmed_2013`, `hfs_confirmed_2019`, ..., `hfs_confirmed_2022` **HFs Confirmed Malaria Cases** Yealy summary of malaria cases reported by this Health Facility.
 - `ACT_consumption_2020`, `ACT_consumption_2021` ... `ACT_consumption_2022`: will be calculated when AMD data is shared.
+- `served_population_2022` served population in all levels of catchments localities.
 
 !!! note ""
 
-    Additional fields brought from other files, CHVs Confirmed Cases brought from Chvs' Monthly routine data in rd_chv_reports.csv, HF Confirmed Cases are from the Health Facility routine data in rd_hfs_malaria_cases_2011_2023.csv, and HF ACT Consumption is from the AMD routine data in rd_amd_movement_data.csv, these summaries have no effect on the uniquness of the Health facility in this list.
+    Additional fields brought from other files, CHVs Confirmed Cases brought from Chvs' Monthly routine data in rd_chv_reports.csv, HF Confirmed Cases are from the Health Facility routine data in rd_hfs_malaria_cases_2011_2023.csv, and HF ACT Consumption is from the AMD routine data in rd_amd_movement_data.csv, catchment_count and served_population_2022 are from md_catchment_locations.csv. These summaries have no effect on the uniquness of the Health facility in this list.
 
 ### :fontawesome-solid-file-csv: Catchment Localities File `md_catchment_locations.csv`
 
