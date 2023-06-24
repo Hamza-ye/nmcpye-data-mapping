@@ -83,11 +83,11 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 
 - `gov_id` **ID of the Governorate**, uniquely identified by this id.
 - `district_id_nmcp` **ID of the District** shared in with shape file.
-- `district_id_unified_s_n` **ID of the District** Used in the south data. Introduced lately to all data files.
+- `district_id_unified_s_n` **ID of the District** Used in the south data. Introduced lately to data files too.
 - `gov_en` **En name of the Governorate**.
-- `gov_ar` **Ar name of the Governorate** UTF-8.
+- `gov_ar` **Ar name of the Governorate** to display correctly -> UTF-8.
 - `district_en` **En name of the District**.
-- `district_ar` **Ar name of the District** UTF-8.
+- `district_ar` **Ar name of the District** to display correctly -> UTF-8.
 
 ### :fontawesome-solid-file-csv: Health Facilities File `md_health_facilities.csv`
 
@@ -96,7 +96,7 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 - `district_id_unified_s_n`.
 - `hf_code_link`.
 - `health_facility_uid` The old shared UID.
-- `hf_name` UTF-8.
+- `hf_name` to display correctly -> UTF-8.
 - `hf_type`.
 - `hf_owner`.
 - `longitude`.
@@ -138,14 +138,14 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 
 ITNs and IRS data where shared this time in the `day` unit, at which day so we can link any other related data to it easly if needed later like IDPs camps GPS and the populated locations that do not link to a particular catchment location in the catchment file, I introduced the `sn` column, this is the unique ID of the record that might be used to share any related data later.
 
-- `sn` in case it is needed to link any record related data.
+- `sn` in case it is needed to link any data related to this record later like IDPs Camps GPS.
 - `year` Year excution started
 - `execution_started` Month excution started
-- `target_type` `1` is a planned location, `blank` or `zero` is eithr an IDPs camp, or other unplanned populated location.
+- `target_type` `1` is a planned location, `blank` or `zero` is eithr an IDPs camp, or other unplanned populated location, *it needs more review*.
 - `village_uid`
 - `district_id_nmcp`
 - `day_of_execution`
-- `houses_2022` started using this variable from 2022.
+- `houses_2022` this variable were introduced to the data from 2022.
 - `res` Residents.
 - `idps`
 - `pop_m` Male Population
@@ -155,17 +155,23 @@ ITNs and IRS data where shared this time in the `day` unit, at which day so we c
 - `preg_wmn` pregnant women
 - `bnets` Bed ntes distributed
 - `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps don't have codes to be linked to a catchment locality but we will look into it and specify within what catchment area later.
+- `status_of_coverage` Was this location fully covered or partially due to a reason, *Last Answer of the team leader in last data submission date*.
+- `reason` If partaily covered what was the reason, *Last Answer of the team leader in the last data submission date*.
 
 ### :fontawesome-solid-file-csv: IRS Data `rd_irs_data.csv`
 
-- `sn` in case it is needed to link any record related data.
+- `sn` in case it is needed to link any data related to this record later like IDPs Camps GPS.
 - `year` Year excution started
 - `execution_started` Month excution started
-- `target_type` `1` is a planned location, `blank` or `zero` is eithr an IDPs camp, or other unplanned populated location.
+- `target_type` `1` is a planned location, `blank` or `zero` is eithr an IDPs camp, or other unplanned populated location, *it needs more review*.
 ...
 - `Is IDPs Camp` `1` is an IDPs Camp.
+- `status_of_coverage` Was this location fully covered or partially due to a reason, *Last Answer of the team leader in last data submission date*.
+- `reason` If partaily covered what was the reason, *Last Answer of the team leader in the last data submission date*.
 
 ## Current Status oF the Shared Data
+
+### Mapping status
 
 NORTH/SOUTH Health Facilities that have data and needs either be mapped to catchments localities or locate their GPS coordinate:
 
@@ -201,3 +207,7 @@ There are currently {--118234--} {++120982++} locations in total, of which {--10
 | SOUTH       |     28     | Al Maharah       |                                       |            |              |
 | SOUTH       |     30     | Al Dhale'e       |                                       |            |              |
 | SOUTH       |     32     | Socotra          |                                       |            |              |
+
+### Rutine Data Status
+
+### Notes on AMD Consumption data that I am working on currenly
