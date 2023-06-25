@@ -1,9 +1,5 @@
 # NMCP Yemen Data Mappaing Docs
 
-## General Note on the files and data access
-
-In the shared folder Data are provided in CSV files `UTF-8` encoding and will be updated in versions. We chose CSV to avoid some of the previous incidental issues on our side, they hold more rows, can be easily inspected and modified. In catchments localities, Using 'letter-ids' is recommended unless being aware all the time during processing and importing to manually assign an `8 bytes big-integer` or `String type` to the digit-coding of villages, most data-processing tools would automatically assign a `4-byte integer` type which causes some IDs to get truncated.
-
 ## Shared Folder Layout
 
       ├───master-data\
@@ -209,14 +205,6 @@ There are currently {--118234--} {++120982++} locations in total, of which {--10
 | NORTH       |     13     | Amanat Al Asimah | ![88.1](https://geps.dev/progress/88) |    5736    |      773     |
 | NORTH/SOUTH |     15     | Taizz            | ![51.4](https://geps.dev/progress/51) |    9574    |     9068     |
 | NORTH/SOUTH |     14     | Al Bayda         | ![100](https://geps.dev/progress/100) |    3646    |              |
-| SOUTH       |     12     | Abyan            |                                       |            |              |
-| SOUTH       |     19     | Hadramaut        |                                       |            |              |
-| SOUTH       |     21     | Shabwah          |                                       |            |              |
-| SOUTH       |     24     | Aden             |                                       |            |              |
-| SOUTH       |     25     | Lahj             |                                       |            |              |
-| SOUTH       |     28     | Al Maharah       |                                       |            |              |
-| SOUTH       |     30     | Al Dhale'e       |                                       |            |              |
-| SOUTH       |     32     | Socotra          |                                       |            |              |
 
 ### Join status between reports and catchments
 
