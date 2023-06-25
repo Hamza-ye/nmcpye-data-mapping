@@ -91,11 +91,15 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.critic
+  - pymdownx.smartsymbols
   - pymdownx.caret
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tilde
   - attr_list
+  - toc:
+      permalink: true
+      toc_depth: 3
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
