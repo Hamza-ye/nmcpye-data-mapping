@@ -177,7 +177,7 @@ ITNs and IRS data where shared this time in the `day` unit, at which day so we c
 
 !!! note "Note on locations names"
 
-    In the ITNs and IRS Reports, the names of the locations can be brought from `md_catchment_locations.csv` file for what links to it. However, the locations that don't have an entry over there their names and other info are entered manually by the field worker I omitted them for now because they usually contains long messages that are unrelated to the name. Team leaders may use this field to send the name and the message, making it necessary to sort through them in order to extract the relevant information.
+    In the ITNs and IRS Reports, the names of the locations can be brought from `md_catchment_locations.csv` file for what links to it. However, the locations that don't have an entry over there their names and other info are entered manually by the field worker I omitted their `name` field for now because they usually contains long messages that are unrelated to the name. Team leaders may use this field to send the name and the message, making it necessary to sort through them in order to extract the relevant information.
 
 ## Current Status oF the Shared Data
 
