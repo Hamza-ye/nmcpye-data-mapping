@@ -219,7 +219,7 @@ ITNs and IRS data where shared this time in the `day` unit, at which day so we c
 - `preg_wmn` pregnant women
 - `bnets` Bed nets distributed
 - `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a general code for all based on the district won't link to a catchment locality currently but we will look into it and specify within what catchment locality later.
-- {--`status_of_coverage`--} and {--`reason`--} this two variables were just added in the two last campaign, omitted from the data files.
+- {--`status_of_coverage`--} and {--`reason`--} this two variables were just added in the last two campaigns, omitted from the data files.
 
 ### :fontawesome-solid-file-csv: IRS Data `rd_irs_data.csv`
 
