@@ -175,7 +175,7 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 
 !!! note ""
 
-    Additional fields brought from other files, I just use them with other calculations such as LLINs, IRS (sometime other meaningless variables) to automatically verify the linking after changes, whenever the calculations differ I review the changes, or to quickly filter where we are active.
+    Additional fields brought from other files, I just use them with other calculations (sometime other meaningless variables) to automatically verify changes or to quickly filter where we are actually active.
 
 ### :fontawesome-solid-file-csv: Catchment Localities File `md_catchment_locations.csv`
 
@@ -195,7 +195,7 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 
 - `chv_id`.
 - `hf_code_link`.
-- `health_facility_uid`.
+- {--`health_facility_uid`--} ignore it.
 
 ## :material-folder: routine-data Folder
 
@@ -219,17 +219,15 @@ ITNs and IRS data where shared this time in the `day` unit, at which day so we c
 - `preg_wmn` pregnant women
 - `bnets` Bed nets distributed
 - `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a general code for all based on the district won't link to a catchment locality currently but we will look into it and specify within what catchment locality later.
-- `status_of_coverage` Was this location fully covered or partially due to a reason, _Last Answer of the team leader in last data submission date_.
-- `reason` If partially covered what was the reason, _Last Answer of the team leader in the last data submission date_.
+- {--`status_of_coverage`--} and {--`reason`--} this two variables were just added in the two last campaign, omitted from the data files.
 
 ### :fontawesome-solid-file-csv: IRS Data `rd_irs_data.csv`
 
 - `sn` in case it is needed to link any data related to this record later like IDPs Camps GPS.
 - `year` Year planned.
 - `started` Year-Month started.
-- `target_type` `1` is a planned location, `blank` or `zero` is either an IDPs camp, or other unplanned populated location, _it needs more review_.
+- {--`target_type` `1` is a planned location, `blank` or `zero` is either an IDPs camp, or other unplanned populated location, _it needs more review_.--} ignore it
 - `village_uid`.
   ...
 - `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a general code for all based on the district won't link to a catchment locality currently but we will look into it and specify within what catchment area later.
-- `status_of_coverage` Was this location fully covered or partially due to a reason, _Last Answer of the team leader in last data submission date_.
-- `reason` If partially covered what was the reason, _Last Answer of the team leader in the last data submission date_.
+- {--`status_of_coverage`--} and {--`reason`--} like itns, omitted from the data files.
