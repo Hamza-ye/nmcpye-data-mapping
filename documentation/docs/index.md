@@ -24,6 +24,8 @@
 
 ## Final Status oF the Shared Data
 
+as of **June, 24 2023** before our last meeting, nothing changed, the documentation may keep changing, the shared data will stay the same unless requested to change something.
+
 ### Mapping status
 
 The following table shows NORTH/SOUTH Health Facilities that have some data in the north files and needs either be mapped to catchments localities or locate their GPS coordinate:
