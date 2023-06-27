@@ -6,7 +6,7 @@
       │       md_catchment_locations.csv
       │       md_chvs.csv
       │       md_districts.csv
-      │       md_health_facilities.csv
+      │       Updated md_health_facilities_south_north_column_.xlsx
       │
       ├───old-data-deprecated\ # deprecated data files
       ├───other-data\
@@ -21,6 +21,67 @@
             │
             └───Insecticide Resistance\
                   Insecticide Resistance Monitoring Summaries.xlsx
+
+## Final Status oF the Shared Data
+
+### Mapping status
+
+The following table shows NORTH/SOUTH Health Facilities that have some data in the north files and needs either be mapped to catchments localities or locate their GPS coordinate:
+
+{==:white_check_mark: Final Health Facilities Mapping & GPS status==}
+
+| **hf_owner** | **-** | **WITH NO CATCHMENTS** | **WITH NO CATCHMENT & GPS** | **WITH NO GPS** |
+| ------------ | :---: | ---------------------- | --------------------------- | --------------- |
+| **OTHER**    |  292  |                        |                             |                 |
+| **PRIVATE**  |  574  |                        |                             | 111             |
+| **PUBLIC**   | 4692  | 848                    | 291                         | 1               |
+
+There are currently {--118234--} {++120982++} locations in total, of which {--105855: 89%--} {++110898: 91%++} have been mapped to a **health facility** in the `md_health_facilities.csv` master file.
+
+{==:white_check_mark: Final CMs Mapping status==}
+
+| **S/N**     | **gov_id** | **gov**          |                 **%**                 | **MAPPED** | **UNMAPPED** |
+| ----------- | :--------: | ---------------- | :-----------------------------------: | :--------: | :----------: |
+| NORTH       |     11     | Ibb              | ![100](https://geps.dev/progress/100) |   16497    |              |
+| NORTH       |     17     | Hajjah           | ![100](https://geps.dev/progress/100) |   14416    |              |
+| NORTH       |     20     | Dhamar           | ![100](https://geps.dev/progress/100) |   14219    |              |
+| NORTH/SOUTH |     18     | Al Hudaydah      | ![100](https://geps.dev/progress/100) |    9508    |              |
+| NORTH       |     23     | Sana'a           | ![100](https://geps.dev/progress/100) |    7504    |      1       |
+| NORTH       |     22     | Sa'ada           | ![100](https://geps.dev/progress/100) |    6992    |              |
+| NORTH       |     31     | Raymah           | ![100](https://geps.dev/progress/100) |    6766    |              |
+| NORTH       |     29     | Amran            | ![100](https://geps.dev/progress/100) |    6421    |              |
+| NORTH       |     16     | Al Jawf          | ![100](https://geps.dev/progress/100) |    2650    |              |
+| NORTH       |     27     | Al Mahwit        | ![99.4](https://geps.dev/progress/99) |    4788    |      29      |
+| NORTH/SOUTH |     26     | Marib            | ![91.1](https://geps.dev/progress/91) |    2181    |     213      |
+| NORTH       |     13     | Amanat Al Asimah | ![88.1](https://geps.dev/progress/88) |    5736    |     773      |
+| NORTH/SOUTH |     15     | Taizz            | ![51.4](https://geps.dev/progress/51) |    9574    |     9068     |
+| NORTH/SOUTH |     14     | Al Bayda         | ![100](https://geps.dev/progress/100) |    3646    |              |
+
+### Join status between reports and catchments
+
+### ITNs Reports `rd_itns_data.csv` --> `md_catchment_locations.csv`
+
+{==:white_check_mark: Final ITN's Records Mapping status==}
+
+| Total         | linked | unlinked (IDPs Camps) | unlinked Other |
+| ------------- | ------ | --------------------- | -------------- |
+| 50735 records | 49806  | 136                   | 793            |
+
+### IRS Reports `rd_irs_data.csv` --> `md_catchment_locations.csv`
+
+{== :white_check_mark: Final IRS Records Mapping status==}
+
+| Total         | linked | unlinked (IDPs Camps) | unlinked Other |
+| ------------- | ------ | --------------------- | -------------- |
+| 30928 records | 30188  | 140                   | 600            |
+
+### AMD Consumption
+
+Will be uploaded in the coming days, it's ready and now I have the time to quickly go through them.
+
+### Entomology data
+
+There are more data collected from the field, needs to be organized and linked to each other.
 
 ## Entities Relationships Diagram
 
@@ -86,9 +147,7 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 - `gov_id` **ID of the Governorate**, uniquely identified by this id.
 - `district_id_nmcp` **Shape's file ID of the District** shared in with shape file.
 - `district_id_unified_s_n` **ID of the District used in south** Used in the south data. Introduced lately to data files too.
-- `gov_en` **En name of the Governorate**.
 - `gov_ar` **Ar name of the Governorate** to display correctly -> UTF-8.
-- `district_en` **En name of the District**.
 - `district_ar` **Ar name of the District** to display correctly -> UTF-8.
 
 ### :fontawesome-solid-file-csv: Health Facilities File `md_health_facilities.csv`
@@ -96,8 +155,8 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 - `gov_id`.
 - `district_id_nmcp`.
 - `district_id_unified_s_n`.
-- `hf_code_link` **ID of the Health Facility** Newly introduced digit-code, available in all data files.
-- `health_facility_uid` **UID of the Health Facility** The old shared UID, available in all data files.
+- `hf_code_link` **ID of the Health Facility** North data files code.
+- {--`health_facility_uid` **UID of the Health Facility**--} Ignore it.
 - `hf_name` to display correctly -> UTF-8, since we merged from multiple sources they contains names in different languages but each is unique.
 - `hf_type`.
 - `hf_owner`.
@@ -116,7 +175,7 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 
 !!! note ""
 
-    Additional fields brought from other files, CHVs Confirmed Cases brought from Chvs' Monthly routine data in rd_chv_reports.csv, HF Confirmed Cases are from the Health Facility routine data in rd_hfs_malaria_cases_2011_2023.csv, and HF ACT Consumption is from the AMD routine data in rd_amd_movement_data.csv, catchment_count and served_population_2022 are from md_catchment_locations.csv. These summaries have no effect on the uniqueness of the Health facility in this list.
+    Additional fields brought from other files, I just use them with other calculations such as LLINs, IRS (sometime other meaningless variables) to automatically verify the linking after changes, whenever the calculations differ I review the changes, or to quickly filter where we are active.
 
 ### :fontawesome-solid-file-csv: Catchment Localities File `md_catchment_locations.csv`
 
@@ -174,60 +233,3 @@ ITNs and IRS data where shared this time in the `day` unit, at which day so we c
 - `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a general code for all based on the district won't link to a catchment locality currently but we will look into it and specify within what catchment area later.
 - `status_of_coverage` Was this location fully covered or partially due to a reason, _Last Answer of the team leader in last data submission date_.
 - `reason` If partially covered what was the reason, _Last Answer of the team leader in the last data submission date_.
-
-!!! note "Note on locations names"
-
-    In the ITNs and IRS Reports, the names of the locations can be brought from `md_catchment_locations.csv` file for what links to it. However, the locations that don't have an entry over there their names and other info are entered manually by the field worker I omitted their `name` field for now because they usually contains long messages that are unrelated to the name. Team leaders may use this field to send the name and the message, making it necessary to sort through them in order to extract the relevant information.
-
-## Current Status oF the Shared Data
-
-### Mapping status
-
-The following table shows NORTH/SOUTH Health Facilities that have some data in the north files and needs either be mapped to catchments localities or locate their GPS coordinate:
-
-| **hf_owner** | **-** | **WITH NO CATCHMENTS** | **WITH NO CATCHMENT & GPS** | **WITH NO GPS** |
-| ------------ | :---: | ---------------------- | --------------------------- | --------------- |
-| **OTHER**    |  292  |                        |                             |                 |
-| **PRIVATE**  |  574  |                        |                             | 111             |
-| **PUBLIC**   | 4692  | 848                    | 291                         | 1               |
-
-There are currently {--118234--} {++120982++} locations in total, of which {--105855: 89%--} {++110898: 91%++} have been mapped to a **health facility** in the `md_health_facilities.csv` master file.
-
-| **S/N**     | **gov_id** | **gov**          |                 **%**                 | **MAPPED** | **UNMAPPED** |
-| ----------- | :--------: | ---------------- | :-----------------------------------: | :--------: | :----------: |
-| NORTH       |     11     | Ibb              | ![100](https://geps.dev/progress/100) |   16497    |              |
-| NORTH       |     17     | Hajjah           | ![100](https://geps.dev/progress/100) |   14416    |              |
-| NORTH       |     20     | Dhamar           | ![100](https://geps.dev/progress/100) |   14219    |              |
-| NORTH/SOUTH |     18     | Al Hudaydah      | ![100](https://geps.dev/progress/100) |    9508    |              |
-| NORTH       |     23     | Sana'a           | ![100](https://geps.dev/progress/100) |    7504    |      1       |
-| NORTH       |     22     | Sa'ada           | ![100](https://geps.dev/progress/100) |    6992    |              |
-| NORTH       |     31     | Raymah           | ![100](https://geps.dev/progress/100) |    6766    |              |
-| NORTH       |     29     | Amran            | ![100](https://geps.dev/progress/100) |    6421    |              |
-| NORTH       |     16     | Al Jawf          | ![100](https://geps.dev/progress/100) |    2650    |              |
-| NORTH       |     27     | Al Mahwit        | ![99.4](https://geps.dev/progress/99) |    4788    |      29      |
-| NORTH/SOUTH |     26     | Marib            | ![91.1](https://geps.dev/progress/91) |    2181    |     213      |
-| NORTH       |     13     | Amanat Al Asimah | ![88.1](https://geps.dev/progress/88) |    5736    |     773      |
-| NORTH/SOUTH |     15     | Taizz            | ![51.4](https://geps.dev/progress/51) |    9574    |     9068     |
-| NORTH/SOUTH |     14     | Al Bayda         | ![100](https://geps.dev/progress/100) |    3646    |              |
-
-### Join status between reports and catchments
-
-### ITNs Reports `rd_itns_data.csv` --> `md_catchment_locations.csv`
-
-| Total         | linked | unlinked (IDPs Camps) | unlinked Other |
-| ------------- | ------ | --------------------- | -------------- |
-| 50735 records | 49806  | 136                   | 793            |
-
-### IRS Reports `rd_irs_data.csv` --> `md_catchment_locations.csv`
-
-| Total         | linked | unlinked (IDPs Camps) | unlinked Other |
-| ------------- | ------ | --------------------- | -------------- |
-| 30928 records | 30188  | 140                   | 600            |
-
-!!! note "Note on unlinked records"
-
-    Unlinked records are for location that should be nearby a linked location. Our team is working on them, We will link some, and some need an extended time. During activities, field-teams often collect additional information such as GPS coordinates and notes on their progress. This information may need to be sorted and verified. The raw data can be shared if it is deemed valuable.
-
-### AMD Consumption
-
-### Entomology data
