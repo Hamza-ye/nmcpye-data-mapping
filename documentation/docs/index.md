@@ -63,19 +63,19 @@ There are currently {--118234--} {++120982++} locations in total, of which {--10
 
 ### ITNs Reports `rd_itns_data.csv` --> `md_catchment_locations.csv`
 
-{==:white_check_mark: Final ITN's Records Mapping status==}
+{==:white_check_mark: Final ITN's Records Mapping status ==}
 
-| Total         | linked | unlinked (IDPs Camps) | unlinked Other |
-| ------------- | ------ | --------------------- | -------------- |
-| 50735 records | 49806  | 136                   | 793            |
+| Total             | linked   | unlinked (IDPs Camps)     | unlinked Other   |
+| ----------------- | :------: | :-----------------------: | :--------------: |
+| 50735 **records** | 49806    | 155                       | 774              |
 
 ### IRS Reports `rd_irs_data.csv` --> `md_catchment_locations.csv`
 
-{== :white_check_mark: Final IRS Records Mapping status==}
+{== :white_check_mark: Final IRS Records Mapping status ==}  {++ IRS 2022 data was Included ++}
 
-| Total         | linked | unlinked (IDPs Camps) | unlinked Other |
-| ------------- | ------ | --------------------- | -------------- |
-| 30928 records | 30188  | 140                   | 600            |
+| Total                               | linked                     | unlinked (IDPs Camps)                     | unlinked Other       |
+| ----------------------------------- | :------------------------: | :---------------------------------------: | :--------------------: |
+| {--30928--} {++41108++} **records** | {--30188--} {++39791++}    | {--140--} {++154++}                       | {--600--} {++1163++}   |
 
 ### AMD Consumption
 
@@ -233,3 +233,11 @@ ITNs and IRS data where shared this time in the `day` unit, at which day so we c
   ...
 - `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a general code for all based on the district won't link to a catchment locality currently but we will look into it and specify within what catchment area later.
 - {--`status_of_coverage`--} and {--`reason`--} like itns, omitted from the data files.
+- `House Hold` this variable {==Was not part of the 2022 campaign==}.
+- `Full spray` Houses fully sprayed. {==Was not part of the 2022 campaign==}
+- `Partial spray` Houses partially sprayed. {==Was not part of the 2022 campaign==}
+- `Houses sprayed` Houses that was sprayed. available in all years except 2022 sprayed houses are stated either partially or fully i.e. = `Full spray` + `Partial spray`, 2022 it's entered alone.
+- `Houses non-sprayed` non-sprayed houses, stating which Closed and which Refused i.e = `Closed` + `Refused`.
+- `Closed` Closed houses.
+- `Refused` Refused houses.
+- `Total Houses` = `Houses sprayed` + `Houses non-sprayed`.
