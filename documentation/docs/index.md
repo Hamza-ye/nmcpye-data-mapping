@@ -232,12 +232,19 @@ ITNs and IRS data where shared this time in the `day` unit, at which day so we c
 - `village_uid`.
   ...
 - `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a general code for all based on the district won't link to a catchment locality currently but we will look into it and specify within what catchment area later.
-- {--`status_of_coverage`--} and {--`reason`--} like itns, omitted from the data files.
-- `House Hold` this variable {==Was not part of the 2022 campaign==}.
-- `Full spray` Houses fully sprayed. {==Was not part of the 2022 campaign==}
-- `Partial spray` Houses partially sprayed. {==Was not part of the 2022 campaign==}
-- `Houses sprayed` Houses that was sprayed. available in all years except 2022 sprayed houses are stated either partially or fully i.e. = `Full spray` + `Partial spray`, 2022 it's entered alone.
-- `Houses non-sprayed` non-sprayed houses, stating which Closed and which Refused i.e = `Closed` + `Refused`.
-- `Closed` Closed houses.
-- `Refused` Refused houses.
-- `Total Houses` = `Houses sprayed` + `Houses non-sprayed`.
+
+|                    |     **2019**     |     **2020**     |     **2022**     |                                    |
+|--------------------|:----------------:|:----------------:|:----------------:|------------------------------------|
+| Population         | :material-check: | :material-check: | :material-check: |                                    |
+| House Hold         | :material-check: | :material-check: | :material-check: |                                    |
+| Houses sprayed     | :material-check: | :material-check: | :material-check: | = `Full spray` + `Partial spray`   |
+| Houses non-sprayed | :material-check: | :material-check: | :material-check: | = `Closed` + `Refused`             |
+| Total Houses       | :material-check: | :material-check: | :material-check: | = `sprayed` + `non-sprayed` houses |
+| Full spray         | :material-check: | :material-check: |        :x:       |                                    |
+| Partial spray      | :material-check: | :material-check: |        :x:       |                                    |
+| Rooms sprayed      | :material-check: | :material-check: | :material-check: |                                    |
+| Rooms non-sprayed  | :material-check: | :material-check: | :material-check: |                                    |
+| Total No of rooms  | :material-check: | :material-check: | :material-check: |                                    |
+| No. of workers     | :material-check: | :material-check: |        :x:       |                                    |
+| Closed             | :material-check: | :material-check: | :material-check: |                                    |
+| Refused            | :material-check: | :material-check: | :material-check: |                                    |
