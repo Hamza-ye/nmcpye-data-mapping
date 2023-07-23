@@ -88,17 +88,13 @@ The consumption periods between 2019 and 2022 are consecutive and have no gaps. 
 
 If necessary, I can include any other relevant info and modify the structure of the report as per request.
 
-- `gov_id`
-- `district_id_nmcp`
-- `district_en`
-- `hf_name`
-- `hf_code_link`
+- `gov_id`, `district_id_nmcp`, `district_en`, `hf_name`, `hf_code_link`.
 - `consumed_ACT`
 - `consumption_from_week` : Start of consumption period.
 - `consumption_to_week` End of consumption period.
-- `total_confirmed_cases` Total reported confirmed cases in the routine data within the same consumption period summed up from the available reports in routine data.
-- `available_cases_data_in_eidews_from_week` Start of available routine data period. If it starts later than the start of consumption period the difference is missing weeks in routine data.
-- `available_cases_data_in_eidews_to_week` End of available routine data period. If it ends earlier than the end of consumption period the difference is missing weeks in routine data
+- `total_confirmed_cases` Total reported confirmed cases in eIDEWS routine data within the same consumption period summed up from the available reports in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
+- `available_cases_data_in_eidews_from_week` Start of available routine data period. If it starts later than the start of consumption period the difference is missing weeks in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
+- `available_cases_data_in_eidews_to_week` End of available routine data period. If it ends earlier than the end of consumption period the difference is missing weeks in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
 - `hf_has_catchment_localities` `1` If the hf has a catchment in the catchment file, `blank` or `0` if it has no catchment.
 
 ### Entomology data
