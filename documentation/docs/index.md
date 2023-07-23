@@ -195,7 +195,7 @@ The same file I shared previously, removed (received, remaining...)  columns to 
 - `available_cases_data_in_eidews_to_week` End of available routine data period. If it ends earlier than the end of consumption period the difference is missing weeks in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
 - `hf_has_catchment_localities` `1` If the hf has a catchment in the catchment file, `blank` or `0` if it has no catchment.
 
-The consumption periods between 2019 and 2022 are consecutive and have no gaps. in the Health facilities we supply with AMDs data in this file can be considered more reliable than the eIDEWS' cases routine data. Occasionally, there may be instances where the number of eIDEWS' cases exceeds the amount of consumption, which may be due to a shortage of supplies. Although this occurs infrequently, The majority of the consumption reports are from the most critical areas where malaria is prevalent.
+  The consumption periods between 2019 and 2022 are consecutive and have no gaps. in the Health facilities we supply with AMDs data in this file can be considered more reliable than the eIDEWS' cases routine data. Occasionally, there may be instances where the number of eIDEWS' cases exceeds the amount of consumption, which may be due to a shortage of supplies. Although this occurs infrequently, The majority of the consumption reports are from the most critical areas where malaria is prevalent.
 
 If necessary, I can include any other relevant info and modify the structure of the report as per request.
 
