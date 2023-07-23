@@ -80,7 +80,7 @@ There are currently {--118234--} {++120982++} locations in total, of which {--10
 | ----------------- | :------: | :--------------------: | :------------:|
 | 41108 **records** | 39791    | 154                    | 1163           |
 
-### AMD Consumption `amd_movement_summary_act_consumption_shared.xlsx`
+### :material-file-excel-box-outline: AMD Consumption `amd_movement_summary_act_consumption_shared.xlsx`
 
 The consumption periods between 2019 and 2022 are consecutive and have no gaps. They are more reliable in the major health facilities than the cases routine data. Occasionally, there may be instances where the number of cases exceeds the amount of consumption, which may be due to a shortage of supplies. Although this occurs infrequently, I have not included this information in order to avoid cluttering the main report. The majority of the reports are from the most critical areas where malaria is prevalent. If necessary, I can include this information and modify the structure of the report as per request.
 
