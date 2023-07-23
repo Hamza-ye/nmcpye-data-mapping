@@ -23,84 +23,6 @@
             └───Insecticide Resistance\
                   Insecticide Resistance Monitoring Summaries.xlsx
 
-## Final Status oF the Shared Data
-
-as of **June, 24 2023** before our last meeting, nothing changed, the documentation may keep changing, the shared data will stay the same unless requested to change something.
-
-### Mapping status
-
-The following table shows NORTH/SOUTH Health Facilities that have some data in the north files and needs either be mapped to catchments localities or locate their GPS coordinate:
-
-{==:white_check_mark: Final Health Facilities Mapping & GPS status==}
-
-| **hf_owner** | **-** | **WITH NO CATCHMENTS** | **WITH NO CATCHMENT & GPS** | **WITH NO GPS** |
-| ------------ | :---: | ---------------------- | --------------------------- | --------------- |
-| **OTHER**    |  292  |                        |                             |                 |
-| **PRIVATE**  |  574  |                        |                             | 111             |
-| **PUBLIC**   | 4692  | 848                    | 291                         | 1               |
-
-There are currently {--118234--} {++120982++} locations in total, of which {--105855: 89%--} {++110898: 91%++} have been mapped to a **health facility** in the `md_health_facilities.csv` master file.
-
-{==:white_check_mark: Final CMs Mapping status==}
-
-| **S/N**     | **gov_id** | **gov**          |                 **%**                 | **MAPPED** | **UNMAPPED** |
-| ----------- | :--------: | ---------------- | :-----------------------------------: | :--------: | :----------: |
-| NORTH       |     11     | Ibb              | ![100](https://geps.dev/progress/100) |   16497    |              |
-| NORTH       |     17     | Hajjah           | ![100](https://geps.dev/progress/100) |   14416    |              |
-| NORTH       |     20     | Dhamar           | ![100](https://geps.dev/progress/100) |   14219    |              |
-| NORTH/SOUTH |     18     | Al Hudaydah      | ![100](https://geps.dev/progress/100) |    9508    |              |
-| NORTH       |     23     | Sana'a           | ![100](https://geps.dev/progress/100) |    7504    |      1       |
-| NORTH       |     22     | Sa'ada           | ![100](https://geps.dev/progress/100) |    6992    |              |
-| NORTH       |     31     | Raymah           | ![100](https://geps.dev/progress/100) |    6766    |              |
-| NORTH       |     29     | Amran            | ![100](https://geps.dev/progress/100) |    6421    |              |
-| NORTH       |     16     | Al Jawf          | ![100](https://geps.dev/progress/100) |    2650    |              |
-| NORTH       |     27     | Al Mahwit        | ![99.4](https://geps.dev/progress/99) |    4788    |      29      |
-| NORTH/SOUTH |     26     | Marib            | ![91.1](https://geps.dev/progress/91) |    2181    |     213      |
-| NORTH       |     13     | Amanat Al Asimah | ![88.1](https://geps.dev/progress/88) |    5736    |     773      |
-| NORTH/SOUTH |     15     | Taizz            | ![51.4](https://geps.dev/progress/51) |    9574    |     9068     |
-| NORTH/SOUTH |     14     | Al Bayda         | ![100](https://geps.dev/progress/100) |    3646    |              |
-
-### Join status between reports and catchments
-
-### ITNs Reports `rd_itns_data.csv` --> `md_catchment_locations.csv`
-
-{==:white_check_mark: Final ITN's Records Mapping status ==}
-
-| Total             | linked   | unlinked (IDPs Camps)     | unlinked Other   |
-| ----------------- | :------: | :-----------------------: | :--------------: |
-| 50735 **records** | 49806    | 155                       | 774              |
-
-### IRS Reports `rd_irs_data.csv` --> `md_catchment_locations.csv`
-
-{== :white_check_mark: Final IRS Records Mapping status ==}
-
-{++ After IRS 2022 data was Included ++}
-
-| Total             | linked   | unlinked (IDPs Camps)  | unlinked Other |
-| ----------------- | :------: | :--------------------: | :------------:|
-| 41108 **records** | 39791    | 154                    | 1163           |
-
-### :fontawesome-solid-file-excel: AMD Consumption `amd_movement_summary_act_consumption_shared.xlsx`
-
-The same file I shared previously, removed (received, remaining...)  columns to not clutter the main point and just calculated the consumption and restructured it in this new form.
-
-The consumption periods between 2019 and 2022 are consecutive and have no gaps. They are more reliable in the major health facilities than the cases routine data. Occasionally, there may be instances where the number of cases exceeds the amount of consumption, which may be due to a shortage of supplies. Although this occurs infrequently, The majority of the reports are from the most critical areas where malaria is prevalent.
-
-If necessary, I can include any other relevant info and modify the structure of the report as per request.
-
-- `gov_id`, `district_id_nmcp`, `district_en`, `hf_name`, `hf_code_link`.
-- `consumed_ACT`
-- `consumption_from_week` : Start of consumption period.
-- `consumption_to_week` End of consumption period.
-- `total_confirmed_cases` Total reported confirmed cases in eIDEWS routine data within the same consumption period summed up from the available reports in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
-- `available_cases_data_in_eidews_from_week` Start of available routine data period. If it starts later than the start of consumption period the difference is missing weeks in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
-- `available_cases_data_in_eidews_to_week` End of available routine data period. If it ends earlier than the end of consumption period the difference is missing weeks in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
-- `hf_has_catchment_localities` `1` If the hf has a catchment in the catchment file, `blank` or `0` if it has no catchment.
-
-### Entomology data
-
-There are more data collected from the field, needs to be organized and linked to each other.
-
 ## Entities Relationships Diagram
 
 Relations between entities in the data files.
@@ -259,3 +181,24 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 | No. of workers     | :material-check: | :material-check: |        :x:       |                                    |
 | Closed             | :material-check: | :material-check: | :material-check: |                                    |
 | Refused            | :material-check: | :material-check: | :material-check: |                                    |
+
+### :fontawesome-solid-file-excel: AMD Consumption `amd_movement_summary_act_consumption_shared.xlsx`
+
+The same file I shared previously, removed (received, remaining...)  columns to not clutter the main point and just calculated the consumption and restructured it in this new form.
+
+- `gov_id`, `district_id_nmcp`, `district_en`, `hf_name`, `hf_code_link`.
+- `consumed_ACT`
+- `consumption_from_week` : Start of consumption period.
+- `consumption_to_week` End of consumption period.
+- `total_confirmed_cases` Total reported confirmed cases in eIDEWS routine data within the same consumption period summed up from the available reports in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
+- `available_cases_data_in_eidews_from_week` Start of available routine data period. If it starts later than the start of consumption period the difference is missing weeks in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
+- `available_cases_data_in_eidews_to_week` End of available routine data period. If it ends earlier than the end of consumption period the difference is missing weeks in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
+- `hf_has_catchment_localities` `1` If the hf has a catchment in the catchment file, `blank` or `0` if it has no catchment.
+
+The consumption periods between 2019 and 2022 are consecutive and have no gaps. in the Health facilities we supply with AMDs data in this file can be considered more reliable than the eIDEWS' cases routine data. Occasionally, there may be instances where the number of eIDEWS' cases exceeds the amount of consumption, which may be due to a shortage of supplies. Although this occurs infrequently, The majority of the consumption reports are from the most critical areas where malaria is prevalent.
+
+If necessary, I can include any other relevant info and modify the structure of the report as per request.
+
+### Entomology data
+
+There are more data collected from the field, needs to be organized and linked to each other.
