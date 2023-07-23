@@ -82,18 +82,20 @@ There are currently {--118234--} {++120982++} locations in total, of which {--10
 
 ### AMD Consumption `amd_movement_summary_act_consumption_shared.xlsx`
 
+The consumption periods between 2019 and 2022 are consecutive and have no gaps. They are more reliable in the major health facilities than the cases routine data. Occasionally, there may be instances where the number of cases exceeds the amount of consumption, which may be due to a shortage of supplies. Although this occurs infrequently, I have not included this information in order to avoid cluttering the main report. The majority of the reports are from the most critical areas where malaria is prevalent. If necessary, I can include this information and modify the structure of the report as per request.
+
 - `gov_id`
 - `district_id_nmcp`
 - `district_en`
 - `hf_name`
 - `hf_code_link`
 - `consumed_ACT`
-- `consumption_from_week` : start of consumption period.
-- `consumption_to_week` end of consumption period.
-- `total_confirmed_cases` total reported confirmed cases in the routine data within the same consumption period summed up from the available reports in routine data.
-- `available_cases_data_in_eidews_from_week` start of available routine data period, if it starts later than the start of consumption period the difference is missing weeks in routine data.
-- `available_cases_data_in_eidews_to_week` end of consumption period. if it ends earlier than the end of consumption period the difference is missing weeks in routine data
-- `hf_has_catchment_localities` `1` if the hf has a catchment in the catchment file, `blank` or `0` if it has no catchment.
+- `consumption_from_week` : Start of consumption period.
+- `consumption_to_week` End of consumption period.
+- `total_confirmed_cases` Total reported confirmed cases in the routine data within the same consumption period summed up from the available reports in routine data.
+- `available_cases_data_in_eidews_from_week` Start of available routine data period. If it starts later than the start of consumption period the difference is missing weeks in routine data.
+- `available_cases_data_in_eidews_to_week` End of consumption period. If it ends earlier than the end of consumption period the difference is missing weeks in routine data
+- `hf_has_catchment_localities` `1` If the hf has a catchment in the catchment file, `blank` or `0` if it has no catchment.
 
 ### Entomology data
 
