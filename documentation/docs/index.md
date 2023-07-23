@@ -94,7 +94,7 @@ The consumption periods between 2019 and 2022 are consecutive and have no gaps. 
 - `consumption_to_week` End of consumption period.
 - `total_confirmed_cases` Total reported confirmed cases in the routine data within the same consumption period summed up from the available reports in routine data.
 - `available_cases_data_in_eidews_from_week` Start of available routine data period. If it starts later than the start of consumption period the difference is missing weeks in routine data.
-- `available_cases_data_in_eidews_to_week` End of consumption period. If it ends earlier than the end of consumption period the difference is missing weeks in routine data
+- `available_cases_data_in_eidews_to_week` End of available routine data period. If it ends earlier than the end of consumption period the difference is missing weeks in routine data
 - `hf_has_catchment_localities` `1` If the hf has a catchment in the catchment file, `blank` or `0` if it has no catchment.
 
 ### Entomology data
