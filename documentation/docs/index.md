@@ -1,4 +1,4 @@
-# NMCP Yemen Data Mappaing Docs
+# NMCP Yemen Data Mapping Docs
 
 ## Shared Folder Layout
 
