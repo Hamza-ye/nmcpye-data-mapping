@@ -11,6 +11,7 @@
       ├───old-data-deprecated\ # deprecated data files
       ├───other-data\
       └───routine-data\
+      |   amd_movement_summary_act_consumption_shared.xlsx
       │   rd_chvs_monthly_data.csv
       │   rd_hfs_malaria_cases_2011_2023.csv
       │   rd_irs_data.csv
@@ -71,15 +72,28 @@ There are currently {--118234--} {++120982++} locations in total, of which {--10
 
 ### IRS Reports `rd_irs_data.csv` --> `md_catchment_locations.csv`
 
-{== :white_check_mark: Final IRS Records Mapping status ==}  {++ IRS 2022 data was Included ++}
+{== :white_check_mark: Final IRS Records Mapping status ==}
 
-| Total                               | linked                     | unlinked (IDPs Camps)                     | unlinked Other       |
-| ----------------------------------- | :------------------------: | :---------------------------------------: | :--------------------: |
-| {--30928--} {++41108++} **records** | {--30188--} {++39791++}    | {--140--} {++154++}                       | {--600--} {++1163++}   |
+{++ After IRS 2022 data was Included ++}
 
-### AMD Consumption
+| Total             | linked   | unlinked (IDPs Camps)  | unlinked Other |
+| ----------------- | :------: | :--------------------: | :------------:|
+| 41108 **records** | 39791    | 154                    | 1163           |
 
-Will be uploaded in the coming days, it's ready and now I have the time to quickly go through them.
+### AMD Consumption `amd_movement_summary_act_consumption_shared.xlsx`
+
+- `gov_id`
+- `district_id_nmcp`
+- `district_en`
+- `hf_name`
+- `hf_code_link`
+- `consumed_ACT`
+- `consumption_from_week` : start of consumption period.
+- `consumption_to_week` end of consumption period.
+- `total_confirmed_cases` total reported confirmed cases in the routine data within the same consumption period summed up from the available reports in routine data.
+- `available_cases_data_in_eidews_from_week` start of available routine data period, if it starts later than the start of consumption period the difference is missing weeks in routine data.
+- `available_cases_data_in_eidews_to_week` end of consumption period. if it ends earlier than the end of consumption period the difference is missing weeks in routine data
+- `hf_has_catchment_localities` `1` if the hf has a catchment in the catchment file, `blank` or `0` if it has no catchment.
 
 ### Entomology data
 
@@ -203,14 +217,11 @@ Administrative boundary datasets for levels 1, 2 (governorate, and district) for
 
 ### :fontawesome-solid-file-csv: ITNs Data 2018 - 2022 `rd_itns_data.csv`
 
-ITNs and IRS data where shared this time in the `day` unit, at which day so we can link any other related data to it easily if needed later like IDPs camps' or populated locations' GPS that do not link to a particular catchment location in the catchment file, I introduced the `sn` column, this is the unique ID of the record that might be used to share this kind of data later.
-
 - `sn` in case it is needed to link any data related to this record later like IDPs Camps GPS.
 - `year` Year planned.
 - `started` Year-Month started.
-- `target_type` `1` is a planned location, `blank` or `zero` is either an IDPs camp, or other unplanned populated location, _it needs more review_.
 - `village_uid`
-- `day_of_execution`
+- `day`
 - `houses_2022` this variable were introduced to the data from 2022.
 - `res` Residents.
 - `idps`
@@ -221,14 +232,12 @@ ITNs and IRS data where shared this time in the `day` unit, at which day so we c
 - `preg_wmn` pregnant women
 - `bnets` Bed nets distributed
 - `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a general code for all based on the district won't link to a catchment locality currently but we will look into it and specify within what catchment locality later.
-- {--`status_of_coverage`--} and {--`reason`--} this two variables were just added in the last two campaigns, omitted from the data files.
 
 ### :fontawesome-solid-file-csv: IRS Data `rd_irs_data.csv`
 
 - `sn` in case it is needed to link any data related to this record later like IDPs Camps GPS.
 - `year` Year planned.
 - `started` Year-Month started.
-- {--`target_type` `1` is a planned location, `blank` or `zero` is either an IDPs camp, or other unplanned populated location, _it needs more review_.--} ignore it
 - `village_uid`.
   ...
 - `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a general code for all based on the district won't link to a catchment locality currently but we will look into it and specify within what catchment area later.
