@@ -112,6 +112,9 @@ markdown_extensions:
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - javascripts/tablesort.js
+  - javascripts/extra.js
+extra_css:
+  - stylesheets/extra.css
 
 copyright: |
   &copy; 2023 <a href="https://github.com/Hamza-ye/nmcpye-data-mapping"  target="_blank" rel="noopener">NMCP Yemen</a>
