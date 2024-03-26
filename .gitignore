@@ -1,2 +1,8 @@
 storage_key/
 .venv/
+job/
+job/*
+warehouses/
+warehouses/*
+random_queries/
+random_queries/*

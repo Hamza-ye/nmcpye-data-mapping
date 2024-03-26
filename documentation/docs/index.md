@@ -1,204 +1,178 @@
-# NMCP Yemen Data Mapping Docs
+# Report staging
 
-## Shared Folder Layout
+**Project:** Data assembly and cleaning Of NMCP Yemen and automating the workflow
 
-      ├───master-data\
-      │       md_catchment_locations.csv
-      │       md_chvs.csv
-      │       md_districts.csv
-      │       Updated md_health_facilities_south_north_column_.xlsx
-      │
-      ├───old-data-deprecated\ # deprecated data files
-      ├───other-data\
-      └───routine-data\
-      |   amd_movement_act_consumption.xlsx
-      │   rd_chvs_monthly_data.csv
-      │   rd_hfs_malaria_cases_2011_2023.csv
-      │   rd_irs_data.csv
-      │   rd_itns_data.csv
-      │
-      └───entomology\
-            │   larval and adults exploration and investigation.xlsx
-            │
-            └───Insecticide Resistance\
-                  Insecticide Resistance Monitoring Summaries.xlsx
+## Report
 
-## Entities Relationships Diagram
+### 1. Abstract
 
-Relations between entities in the data files.
+This report describes the process of consilidationg and mapping the data of National Malaria Control program into structured format the can be easily quired and analyzed
 
-!!! note ""
+despite the differences in codes and names between the different datasets. The report discusses the challenges involved in each task and the strategies employed to address them. The report concludes with a summary of the findings and recommendations for future work.
 
-    Only the fields participating in a relationship from each side are included in each diagram.
+We Will start By Defining the Available Data Sources and Activities. Then We will Go through the data review and cleaning process and provide the methods used and the result of Each reviewing iteration.
+
+The Data cleaning and reviewing process will be automated (python code and other data integration and transformation tools) and manual by the team of this project.
+
+Designing an integration pipe lines that merge data without repeating ourselves whenever we made changes to the Data. The Codes and Data Integration and Transformation Files are shared on the GitHub Page.
+
+### objectives the project
+
+The main objective is mapping all their activity data into a structured format for easy analysis. which will involve:
+
+1. Creating the Dimension or Master Lists tables
+dimension tables are frequently referenced entities that are referenced by the NMCP's activities data, Which include:
+
+   - 2.1 Villages List Master Table.
+   - 2.2 Health Facilities Merged Master List (HFs).
+   - 2.3 Community Health Volunteers List (CHVs).
+
+2. Review, Clean and merge the Data of each data source insuring they connect to the Masters List they are referencing.
+3. Develop data visualization tools: Create dashboards and reports to visualize trends, analyze intervention effectiveness, and track progress towards malaria control goals.
+
+The Final resulted Data mapping structure will have the following structure:
 
 ```mermaid
 erDiagram
-  MD_ADMINISTRATIVE_LEVEL ||--o{ MD-HEALTH-FACILITY : "Has zero or more"
-  MD_ADMINISTRATIVE_LEVEL {
-        int district_id
-  }
-  MD-HEALTH-FACILITY ||--o{ MD-CATCHMENT-LOCATION : Serves
-  MD-HEALTH-FACILITY ||--o{ MD-CHV : Supervises
-  MD-HEALTH-FACILITY ||--o{ RD-MALARIA-CASES-REPORT : submits
-  MD-HEALTH-FACILITY {
-        int district_id
-        int hf_code_link PK
-
-  }
-  MD-CATCHMENT-LOCATION {
-        int hf_code_link
-        string village_uid
-  }
-  MD-CHV ||--|{ RD-CHV-CASES-REPORT : submits
-  MD-CHV ||--|{ MD-CATCHMENT-LOCATION : Serves
-  MD-CHV {
-        int chv_id PK
-        int hf_code_link
-        string village_uid
-  }
-  RD-MALARIA-CASES-REPORT {
-        int hf_code_link
-  }
-  RD-CHV-CASES-REPORT {
-        int chv_id
-  }
-  MD-CATCHMENT-LOCATION ||--o{ ITN-REPORT : Has
-  MD-CATCHMENT-LOCATION ||--o{ IRS-REPORT : Has
-  ITN-REPORT {
-        string village_uid
-  }
-  IRS-REPORT {
-        string village_uid
-  }
+  DISTRICT ||--o{ HEALTH-FACILITY : "Administrative level of one or more"
+  DISTRICT ||--o{ VILLAGES-LOCATION : "Administrative level of one or more"
+  HEALTH-FACILITY ||--o{ CHV : "Supervises one or more"
+  HEALTH-FACILITY ||--o{ MALARIA-CASES-REPORT : "submits one or more"
+  CHV ||--|{ CHV-MALARIA-CASES-REPORT : "submits one or more"
+  VILLAGES-LOCATION ||--o{ ITN-REPORT : "Has one or more"
+  VILLAGES-LOCATION ||--o{ IRS-REPORT : "Has one or more"
 ```
 
-## :material-folder: metadata-master-lists Folder
+A structure which would enables us to:
 
-Files in this folder contain the entities to which all the routine data can be linked using the IDs, an entity in its file is uniquely identified by the ID with no duplication except for the `md_catchment_locations.csv` master file.
+- Have Easy and real time Access to data anytime about any entity when all activities and data collection are linked to this organizational hierarchy.
+- Have a stored data about all entities NMCP involve with such as people, patients, beneficiaries of NMCP's different  activities... etc.
+- Have a historical records of Personnel involved and in implementing NMCP activities, such as vector control of teams, data collectors, and educators ...etc. which will make it easier to analyzing their performances in all activities they are participating in.
+- Easily Brows the summaries and historical data activities per entity (i.e access certain location historical data about ITNs distribution, breading sites, or any malaria relevant data to that locationm).
+- Easily assess and improve intervention targeting, resource allocation, and program monitoring.
 
-!!! info ""
+Project Data Processing Workflow (local and online database, for collaboration between this project team and to manage and test any new edits to the data before merging to the production database)
 
-    In Order for the Arabic letters to display correctly CSV files need to be imported in `UTF-8` unicode.
+    Work flow chart Will be here
 
-### :fontawesome-solid-file-csv: Districts File `md_districts.csv`
+### 1 Defining Activities and Data sources
 
-Administrative boundary datasets for levels 1, 2 (governorate, and district) for Yemen south and north, all master and routine data files have been unified to fully link to this file using the IDs `gov_id` or `district_id_unified_s_n`. The `district_id_nmcp` is the one used to link to the district level in shared shape file.
+Some NMCP activities Data was submitted using the unique codes of the master entity in the master list which make them easy to map, but there are activities that were collected not using the code of the Subjects (Village code, Health Facility code) on those master lists.
 
-- `gov_id` **ID of the Governorate**, uniquely identified by this id.
-- `district_id_nmcp` **Shape's file ID of the District** shared in with shape file.
-- `district_id_unified_s_n` **ID of the District used in south** Used in the south data. Introduced lately to data files too.
-- `gov_ar` **Ar name of the Governorate** to display correctly -> UTF-8.
-- `district_ar` **Ar name of the District** to display correctly -> UTF-8.
+Most of these activities are done directly by NMCP staff per targeted entity (location/health facility...etc). These Activities are done periodically in a mass campaign that is planned and executed in a specific span of time (i.e 6 days, 11 days).
 
-### :fontawesome-solid-file-csv: Health Facilities File `md_health_facilities.csv`
+#### 1.1 Insecticide Treated Nets (ITNs) Data
 
-- `gov_id`.
-- `district_id_nmcp`.
-- `district_id_unified_s_n`.
-- `hf_code_link` **ID of the Health Facility** North data files code.
-- {--`health_facility_uid` **UID of the Health Facility**--} Ignore it.
-- `hf_name` to display correctly -> UTF-8, since we merged from multiple sources they contains names in different languages but each is unique.
-- `hf_type`.
-- `hf_owner`.
-- `longitude`.
-- `latitude`.
-- `elevation`.
+ITNs Distribution is done directly by NMCP per Location from house to house in a mass distribution campaign that takes a certain planned time i.e 6 days, 11 days...
 
-**Additional Fields `brought from other tables`**
+```
+later we need to add the issues the and more Outlining for this data source
+```
 
-- `catchments_count` Catchments localities count.
-- `chvs_count` **Number of CHVs** belonging to this Health Facility if there are any.
-- `chvs_confirmed_2018`, `chvs_confirmed_2019` ... `chvs_confirmed_2022` **Confirmed Malaria Cases** Yearly summary of malaria cases reported by the CHVs supervised by this HF.
-- `hfs_confirmed_2013`, `hfs_confirmed_2019`, ..., `hfs_confirmed_2022` **HFs Confirmed Malaria Cases** Yearly summary of malaria cases reported by this Health Facility.
-- `ACT_consumption_2020`, `ACT_consumption_2021` ... `ACT_consumption_2022`: will be calculated when AMD data is shared.
-- `served_population_2022` served population in all levels of catchments localities.
+#### 1.2 Indoor residual spraying (IRS) Data
 
-!!! note ""
+IRS is done directly by NMCP per Location from house to house in a mass Spraying campaign for a population in multiple planned villages and it takes a certain planned time i.e 6 days, 11 days...
 
-    Additional fields brought from other files, I just use them with other calculations (sometime other meaningless variables) to automatically verify changes or to quickly filter where we are actually active.
+```
+later we need to add the issues the and more Outlining for this data source
+```
 
-### :fontawesome-solid-file-csv: Catchment Localities File `md_catchment_locations.csv`
+#### 1.3 Larval source management (LSM) Data
 
-- `mapping_status` Indicates whether the location is mapped to a **health facility** in the `md_health_facilities.csv` master file or not, with `1` indicating a mapped location and a `blank` indicating an unmapped location.
-- `gov_id` **ID of the Governorate**.
-- `district_id_nmcp`.
-- `district_id_unified_s_n`.
-- `hf_code_link`: locations that are not mapped to a health facility in the north i.e. with `mapping_status = blank` have been given a temporary ID in the form of `district_id + 900 or >900`.
-- `health_facility_uid`.
-- `level` **Accessibility** level to the health facility, with `1` indicating the easiest accessibility and `3` the hardest.
-- `urban_rural` **Urban** or **Rural**, old ids replaced by labels.
-- `settlement` Type of location, such as village, subvillage, island, etc same as before.
-- `pop2004` Population **2004**.
-- `pop2022` Population **2022**.
+per Location done by regional Malaria Units in monthly in different villages withing the administration of the malaria unit.
 
-### :fontawesome-solid-file-csv: CHVs File `md_chvs.csv`
+```
+later we need to add the issues the and more Outlining for this data source
+```
 
-- `chv_id`.
-- `hf_code_link`.
-- {--`health_facility_uid`--} ignore it.
+#### 1.4 Supply of RDTs and AMD Data
 
-## :material-folder: routine-data Folder
+Periodically supply Date of rapid diagnostic tests (RDTs) and antimalarial drugs (AMD) to Health facility warehouses so their health-facility care workers have sufficient stocks to diagnose and treat cases all year: done by nmcp staff in a mass camping targeting most Health Facilities in the country.
 
-### :fontawesome-solid-file-csv: ITNs Data 2018 - 2022 `rd_itns_data.csv`
+```
+later we need to add the issues the and more Outlining for this data source
+```
 
-- `sn` in case it is needed to link any data related to this record later like IDPs Camps GPS.
-- `year` Year planned.
-- `started` Year-Month started.
-- `village_uid`
-- `day`
-- `houses_2022` this variable were introduced to the data from 2022.
-- `res` Residents.
-- `idps`
-- `pop_m` Male Population
-- `pop_f` Female Population
-- `less_5_m` < 5y Male
-- `less_5_f` < 5y Female
-- `preg_wmn` pregnant women
-- `bnets` Bed nets distributed
-- `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a general code for all based on the district won't link to a catchment locality currently but we will look into it and specify within what catchment locality later.
+#### 1.1 community health Volunteers (CHVs) Data
 
-### :fontawesome-solid-file-csv: IRS Data `rd_irs_data.csv`
+Engaging CHVs to promote adoption of preventive measures, and diagnose and treat cases in remote Areas. CHVs submit their data of Malaria cases diagnoses treatment and education session monthly. we have data of 3 years we need to work on in this mapping project.
 
-- `sn` in case it is needed to link any data related to this record later like IDPs Camps GPS.
-- `year` Year planned.
-- `started` Year-Month started.
-- `village_uid`.
-  ...
-- `Is IDPs Camp` `1` is an IDPs Camp, IDPs camps have a general code for all based on the district won't link to a catchment locality currently but we will look into it and specify within what catchment area later.
+```
+later we need to add the issues the and more Outlining for this data source
+```
 
-|                    |     **2019**     |     **2020**     |     **2022**     |                                    |
-|--------------------|:----------------:|:----------------:|:----------------:|------------------------------------|
-| Population         | :material-check: | :material-check: | :material-check: |                                    |
-| House Hold         | :material-check: | :material-check: | :material-check: |                                    |
-| Houses sprayed     | :material-check: | :material-check: | :material-check: | = `Full spray` + `Partial spray`   |
-| Houses non-sprayed | :material-check: | :material-check: | :material-check: | = `Closed` + `Refused`             |
-| Total Houses       | :material-check: | :material-check: | :material-check: | = `sprayed` + `non-sprayed` houses |
-| Full spray         | :material-check: | :material-check: |        :x:       |                                    |
-| Partial spray      | :material-check: | :material-check: |        :x:       |                                    |
-| Rooms sprayed      | :material-check: | :material-check: | :material-check: |                                    |
-| Rooms non-sprayed  | :material-check: | :material-check: | :material-check: |                                    |
-| Total No of rooms  | :material-check: | :material-check: | :material-check: |                                    |
-| No. of workers     | :material-check: | :material-check: |        :x:       |                                    |
-| Closed             | :material-check: | :material-check: | :material-check: |                                    |
-| Refused            | :material-check: | :material-check: | :material-check: |                                    |
+#### 1.1 Malaria Cases Data
 
-### :fontawesome-solid-file-excel: AMD Consumption `amd_movement_summary_act_consumption_shared.xlsx`
+from health facilities (HFs) are submitted on weekly basis per HF
 
-The same file I shared previously, removed (received, remaining...)  columns to not clutter the main point and just calculated the consumption and restructured it in this new form.
+Outline the specific data sources you will be usingL, This helps readers understand the limitations and strengths of your analysis
 
-- `gov_id`, `district_id_nmcp`, `district_en`, `hf_name`, `hf_code_link`.
-- `consumed_ACT`
-- `consumption_from_week` : Start of consumption period.
-- `consumption_to_week` End of consumption period.
-- `total_confirmed_cases` Total reported confirmed cases in eIDEWS routine data within the same consumption period summed up from the available reports in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
-- `available_cases_data_in_eidews_from_week` Start of available routine data period. If it starts later than the start of consumption period the difference is missing weeks in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
-- `available_cases_data_in_eidews_to_week` End of available routine data period. If it ends earlier than the end of consumption period the difference is missing weeks in routine data. `Blank` cells means the Hf has no case reported in eIDEWS for the this consumption period.
-- `hf_has_catchment_localities` `1` If the hf has a catchment in the catchment file, `blank` or `0` if it has no catchment.
+```
+later we need to add the issues the and more Outlining for this data source
+```
 
-  The consumption periods between 2019 and 2022 are consecutive and have no gaps. in the Health facilities we supply with AMDs data in this file can be considered more reliable than the eIDEWS' cases routine data. Occasionally, there may be instances where the number of eIDEWS' cases exceeds the amount of consumption, which may be due to a shortage of supplies. Although this occurs infrequently, The majority of the consumption reports are from the most critical areas where malaria is prevalent.
+### 2 Creating the Dimension tables or The Master Lists
 
-If necessary, I can include any other relevant info and modify the structure of the report as per request.
+dimension tables are frequently referenced entities that are referenced by the NMCP's activities data, Which include:
+  
+#### 2.1 Villages List Master Table
 
-### Entomology data
+Provided by External Country Geographic Office
 
-There are more data collected from the field, needs to be organized and linked to each other.
+#### 2.2 Health Facilities Merged Master List (HFs)
+
+After creating it, we need to map each HF to its catchment Area in the Villages list.
+
+#### 2.3 Community Health Volunteers List (CHVs)
+
+After Creating the list each CHV needs to be mapped to her village in the villages list.
+
+### 2 Review, Clean and merge
+
+Review, Clean and merge of the Data insuring they connect to the Masters List they are referencing.
+
+Each Data Source reviewing process is done in iteration with each iteration having it's result summary. The reviewing process may be through code and integration code and further reviewed manually for what can't be done in code.
+
+#### 2.1 Review of ITNs Data
+
+#### 2.2 Review of IRS Data
+
+#### 2.3 Review of Malaria Cases Data
+
+Merging Malaria Cases Data 2011-2016 of the old System with the data of 2017 and upward
+
+#### 2.4 Review of CHVs Data
+
+#### 2.5 Review of Larval source management Data
+
+## Random Notes
+
+---
+
+Surveillance Systems:
+Routine Health Information System
+Sentinel Site Surveillance
+
+Hfs without Owner Public/Private
+
+**From UNIT I -Data and Data Collection.ppt**
+
+Key Factors for High Quality Experimental
+
+- Data should not be contaminated by poor measurement or errors in procedure.
+
+- Eliminate confounding variables from study or minimize effects on variables.
+- Representativeness: Does your sample represent the population you are studying? Must use random sample techniques.
+
+how data is acquired, saved, distributed, and analyzed. To benefit from the data
+optimally
+
+**Workflow:**
+
+- Establish the necessary databases, tools, and platforms for data processing.
+- Automated Integration: Utilize automated tools (e.g., Python scripts, ETL processes) to integrate data into a unified format.
+- How would the metadata catalog specifying the characteristics of each dataset look like
+- Establish a feedback mechanism for continuous improvement.
+- Schedule regular reporting cycles to analyze data trends and performance
+- Metadata Catalog:
+Create a metadata catalog specifying the characteristics of each dataset.

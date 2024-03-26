@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  postgis:
+    image: postgis/postgis:latest
+    #image: postgis/postgis:13-latest
+    environment:
+      POSTGRES_PASSWORD: PROVID-PASSWORD # Replace this with your desired password
+    ports:
+      - "5431:5432" # Maps port 5431 on the host to port 5432 in the container
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+
+volumes:
+  postgis_data:
